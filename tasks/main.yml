@@ -1,0 +1,6 @@
+---
+
+- include: apt.yml
+- include: nntsc.yml
+- include: amppki.yml
+- include: rabbitmq.yml

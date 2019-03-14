@@ -1,0 +1,28 @@
+---
+
+- name: Install nntsc
+  apt:
+    pkg:
+      - nntsc
+    state: present
+
+# Warn users that /etc/nntsc/nntsc.conf is managed by ansible (even though
+# only some of the lines actually are).
+- name: Mark /etc/nntsc/nntsc.conf as managed by ansible
+  lineinfile:
+    dest: /etc/nntsc/nntsc.conf
+    line: "# Ansible managed"
+    state: present
+    insertbefore: BOF
+
+# This file contains usernames and passwords that were automatically generated
+# by the nntsc Debian package when it was installed, and using a template would
+# clobber these - instead, just update some of the config entries directly.
+- name: Configure /etc/nntsc/nntsc.conf
+  ini_file:
+    path: /etc/nntsc/nntsc.conf
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items: "{{ nntsc_config }}"
+  notify: restart nntsc

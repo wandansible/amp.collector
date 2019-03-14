@@ -1,0 +1,12 @@
+---
+# locations of certs and keys used for rabbitmq-server and apache (amppki)
+amppki_cacertfile: "/etc/amppki/cacert.pem"
+amppki_certfile: "/etc/amppki/server/amppki-cert.pem"
+amppki_keyfile: "/etc/amppki/server/amppki-key.pem"
+
+# /etc/nntsc/nntsc.conf ini_file options:
+nntsc_config:
+  - { section: "nntsc", option: "address", value: "localhost" }
+  - { section: "nntsc", option: "port", value: 61234 }
+  - { section: "influx", option: "keepdata", value: "1095d" }
+  - { section: "amp", option: "commitfreq", value: 20 }

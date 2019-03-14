@@ -1,0 +1,11 @@
+---
+
+- name: restart nntsc
+  service:
+    name: nntsc.service
+    state: restarted
+
+- name: restart rabbitmq
+  service:
+    name: rabbitmq-server.service
+    state: restarted

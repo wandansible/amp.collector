@@ -1,0 +1,27 @@
+---
+
+- name: Set fqdn for amppki
+  debconf:
+    name: amppki
+    question: amppki/fqdn
+    value: "{{ ampname }}"
+    vtype: string
+
+- name: Install amppki packages
+  apt:
+    name: amppki
+    state: present
+
+- name: Allow rabbitmq to read amppki server directory
+  file:
+    dest: "{{ amppki_keyfile | dirname }}"
+    owner: root
+    group: rabbitmq
+    mode: u=rwx,g=rx,o=
+
+- name: Allow rabbitmq to read amppki private key
+  file:
+    dest: "{{ amppki_keyfile }}"
+    owner: root
+    group: rabbitmq
+    mode: u=rw,g=r,o=
