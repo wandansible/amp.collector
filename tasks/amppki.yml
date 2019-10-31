@@ -25,3 +25,10 @@
     owner: root
     group: rabbitmq
     mode: u=rw,g=r,o=
+
+# Apache configuration for amppki
+- name: Configure /usr/share/amppki/amppki.conf
+  template:
+    src: "templates/amppki/amppki.conf"
+    dest: "/usr/share/amppki/amppki.conf"
+  notify: reload apache
