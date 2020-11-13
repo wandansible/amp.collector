@@ -24,5 +24,5 @@
     section: "{{ item.section }}"
     option: "{{ item.option }}"
     value: "{{ item.value }}"
-  with_items: "{{ nntsc_config }}"
+  loop: "{{ nntsc_config }}"
   notify: restart nntsc
