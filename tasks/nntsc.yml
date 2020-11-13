@@ -25,4 +25,6 @@
     option: "{{ item.option }}"
     value: "{{ item.value }}"
   loop: "{{ nntsc_config }}"
+  loop_control:
+    label: "{{ item.option }}={{ item.value }}"
   notify: restart nntsc
