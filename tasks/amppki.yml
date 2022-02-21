@@ -1,26 +1,26 @@
 ---
 
 - name: Set fqdn for amppki
-  debconf:
+  ansible.builtin.debconf:
     name: amppki
     question: amppki/fqdn
     value: "{{ ampname }}"
     vtype: string
 
 - name: Install amppki packages
-  apt:
+  ansible.builtin.apt:
     name: amppki
     state: present
 
 - name: Allow rabbitmq to read amppki server directory
-  file:
+  ansible.builtin.file:
     dest: "{{ amppki_keyfile | dirname }}"
     owner: root
     group: rabbitmq
     mode: u=rwx,g=rx,o=
 
 - name: Allow rabbitmq to read amppki private key
-  file:
+  ansible.builtin.file:
     dest: "{{ amppki_keyfile }}"
     owner: root
     group: rabbitmq
@@ -28,7 +28,10 @@
 
 # Apache configuration for amppki
 - name: Configure /usr/share/amppki/amppki.conf
-  template:
+  ansible.builtin.template:
     src: "templates/amppki/amppki.conf"
     dest: "/usr/share/amppki/amppki.conf"
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
   notify: reload apache

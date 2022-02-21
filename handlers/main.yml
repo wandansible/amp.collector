@@ -1,16 +1,16 @@
 ---
 
 - name: restart nntsc
-  service:
+  ansible.builtin.service:
     name: nntsc.service
     state: restarted
 
 - name: restart rabbitmq
-  service:
+  ansible.builtin.service:
     name: rabbitmq-server.service
     state: restarted
 
 - name: reload apache
-  service:
+  ansible.builtin.service:
     name: apache2.service
     state: reloaded

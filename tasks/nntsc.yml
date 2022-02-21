@@ -1,7 +1,7 @@
 ---
 
 - name: Install nntsc
-  apt:
+  ansible.builtin.apt:
     pkg:
       - nntsc
     state: present
@@ -9,7 +9,7 @@
 # Warn users that /etc/nntsc/nntsc.conf is managed by ansible (even though
 # only some of the lines actually are).
 - name: Mark /etc/nntsc/nntsc.conf as managed by ansible
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/nntsc/nntsc.conf
     line: "# Ansible managed"
     state: present
@@ -19,11 +19,14 @@
 # by the nntsc Debian package when it was installed, and using a template would
 # clobber these - instead, just update some of the config entries directly.
 - name: Configure /etc/nntsc/nntsc.conf
-  ini_file:
+  community.general.ini_file:
     path: /etc/nntsc/nntsc.conf
     section: "{{ item.section }}"
     option: "{{ item.option }}"
     value: "{{ item.value }}"
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
   loop: "{{ nntsc_config }}"
   loop_control:
     label: "{{ item.option }}={{ item.value }}"

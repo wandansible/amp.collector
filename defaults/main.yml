@@ -10,7 +10,15 @@ amppki_keyfile: "/etc/amppki/server/amppki-key.pem"
 
 # /etc/nntsc/nntsc.conf ini_file options:
 nntsc_config:
-  - { section: "nntsc", option: "address", value: "localhost" }
-  - { section: "nntsc", option: "port", value: 61234 }
-  - { section: "influx", option: "keepdata", value: "1095d" }
-  - { section: "amp", option: "commitfreq", value: 20 }
+  - section: "nntsc"
+    option: "address"
+    value: "localhost"
+  - section: "nntsc"
+    option: "port"
+    value: 61234
+  - section: "influx"
+    option: "keepdata"
+    value: "1095d"
+  - section: "amp"
+    option: "commitfreq"
+    value: 20
