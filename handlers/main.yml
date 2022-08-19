@@ -1,5 +1,4 @@
 ---
-
 - name: restart nntsc
   ansible.builtin.service:
     name: nntsc.service
