@@ -3,4 +3,3 @@
 - ansible.builtin.import_tasks: apt.yml
 - ansible.builtin.import_tasks: nntsc.yml
 - ansible.builtin.import_tasks: amppki.yml
-- ansible.builtin.import_tasks: rabbitmq.yml
