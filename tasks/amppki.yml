@@ -1,5 +1,4 @@
 ---
-
 - name: Set fqdn for amppki
   ansible.builtin.debconf:
     name: amppki
