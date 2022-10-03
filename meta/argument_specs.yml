@@ -1,0 +1,49 @@
+---
+argument_specs:
+  main:
+    short_description: Install and configure amppki and nntsc
+    options:
+      amppki_cacertfile:
+        description: Path to CA certificate file
+        type: str
+        default: /etc/amppki/cacert.pem
+
+      amppki_certfile:
+        description: Path to server certificate file
+        type: str
+        default: /etc/amppki/server/amppki-cert.pem
+
+      amppki_keyfile:
+        description: Path to server key file
+        type: str
+        default: /etc/amppki/server/amppki-key.pem
+
+      nntsc_config:
+        description: NNSTC configuration
+        type: list
+        elements: dict
+        options:
+          section:
+            description: Name of the section
+            type: str
+            required: true
+          option:
+            description: Name of the option
+            type: str
+            required: true
+          value:
+            description: Value for the option
+            type: str
+            required: true
+
+      amp_apt_key_fingerprint:
+        description: Fingerprint for amp apt signing key
+        type: str
+
+      old_amp_apt_key_fingerprint:
+        description: Fingerprint for apt signing key for old amp repo
+        type: str
+
+      bintray_amp_apt_key_fingerprint:
+        description: Fingerprint for apt signing key for old bintray amp repo
+        type: str
