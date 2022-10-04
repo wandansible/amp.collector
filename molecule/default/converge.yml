@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include wandansible.amp.collector"
+      ansible.builtin.include_role:
+        name: "wandansible.amp.collector"
+      vars:
+        ampname: "amp.example.org"

@@ -1,0 +1,8 @@
+---
+- name: wandansible.rabbitmq
+  src: https://github.com/wandansible/rabbitmq
+
+- name: wandansible.influxdb
+  src: https://github.com/wandansible/influxdb
+
+- src: geerlingguy.postgresql

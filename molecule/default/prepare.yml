@@ -1,0 +1,26 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: "Install sysctl"
+      ansible.builtin.apt:
+        pkg:
+          - "procps"
+
+    - name: "Enable IPv6"
+      ansible.posix.sysctl:
+        name: "net.ipv6.conf.all.disable_ipv6"
+        value: 0
+        state: present
+
+    - name: "Install postgresql"
+      ansible.builtin.include_role:
+        name: "geerlingguy.postgresql"
+
+    - name: "Install influxdb"
+      ansible.builtin.include_role:
+        name: "wandansible.influxdb"
+
+    - name: "Install rabbitmq"
+      ansible.builtin.include_role:
+        name: "wandansible.rabbitmq"
