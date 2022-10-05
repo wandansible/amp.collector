@@ -3,6 +3,11 @@ argument_specs:
   main:
     short_description: Install and configure amppki and nntsc
     options:
+      ampname:
+        description: Domain name of the amppki server
+        type: str
+        required: true
+
       amppki_cacertfile:
         description: Path to CA certificate file
         type: str
