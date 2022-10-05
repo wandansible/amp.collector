@@ -23,6 +23,11 @@ argument_specs:
         type: str
         default: /etc/amppki/server/amppki-key.pem
 
+      amppki_acl_networks:
+        description: List of networks permitted to have access to amppki
+        type: list
+        elements: str
+
       nntsc_config:
         description: NNSTC configuration
         type: list
